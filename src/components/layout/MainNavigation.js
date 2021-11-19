@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const MainNavigation = () => {
   return (
@@ -6,9 +6,9 @@ const MainNavigation = () => {
       <div>Meetups</div>
       <nav>
         <ul>
-          <Link to="/">All Meetups</Link>
-          <Link to="/new-meetup">New Meetup</Link>
-          <Link to="/favorites">My Favorites</Link>
+          <NavLink to="/">All Meetups</NavLink>
+          <NavLink to="/new-meetup">New Meetup</NavLink>
+          <NavLink to="/favorites">My Favorites</NavLink>
         </ul>
       </nav>
     </header>
