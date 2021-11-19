@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import AllMeetUpsPage from "./pages/AllMeetUps";
 import NewMeetUpsPage from "./pages/NewMeetUp";
 import FavoritesPage from "./pages/Favorites";
-import MainNavigation from "./components/layout/MainNavigation";
+import Layout from "./components/layout/Layout";
 
 function App() {
   /*
@@ -12,8 +12,7 @@ function App() {
   - element prop used to specify the page component to be loaded
   */
   return (
-    <div>
-      <MainNavigation />
+    <Layout>
       <main>
         <Routes>
           <Route path="/" element={<AllMeetUpsPage />}></Route>
@@ -21,7 +20,7 @@ function App() {
           <Route path="/favorites" element={<FavoritesPage />}></Route>
         </Routes>
       </main>
-    </div>
+    </Layout>
   );
 }
 
