@@ -1,14 +1,22 @@
 import { NavLink } from "react-router-dom";
 
+import classes from "./MainNavigation.module.css";
+
 const MainNavigation = () => {
   return (
-    <header>
-      <div>Meetups</div>
+    <header className={classes.header}>
+      <div className={classes.logo}>Meetups</div>
       <nav>
         <ul>
-          <NavLink to="/">All Meetups</NavLink>
-          <NavLink to="/new-meetup">New Meetup</NavLink>
-          <NavLink to="/favorites">My Favorites</NavLink>
+          <li>
+            <NavLink to="/">All Meetups</NavLink>
+          </li>
+          <li>
+            <NavLink to="/new-meetup">New Meetup</NavLink>
+          </li>
+          <li>
+            <NavLink to="/favorites">My Favorites</NavLink>
+          </li>
         </ul>
       </nav>
     </header>
