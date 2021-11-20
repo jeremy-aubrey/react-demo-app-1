@@ -1,31 +1,50 @@
+import { useState, useEffect } from "react";
+
 import MeetUpList from "../components/meetups/MeetUpList";
 
-const DUMMY_DATA = [
-  {
-    id: "m1",
-    title: "First Meetup",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg",
-    address: "Meetupstreet 5, 12345 Meetup City",
-    description:
-      "This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!",
-  },
-  {
-    id: "m2",
-    title: "Second Meetup",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg",
-    address: "Meetupstreet 5, 12345 Meetup City",
-    description:
-      "This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!",
-  },
-];
-
 const AllMeetUpsPage = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [meetUps, setMeetUps] = useState([]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    /*
+      NOTE: Firebase will return an object with properties with nested objects
+    */
+    fetch(
+      "https://react-demo-project-1-default-rtdb.firebaseio.com/meetups.json"
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        //transform the data into an array that can be used by map
+        const meetUpsArr = [];
+        for (const key in data) {
+          const meetUp = {
+            id: key,
+            ...data[key]
+          }
+          meetUpsArr.push(meetUp);
+        }
+
+        console.log(meetUpsArr);
+        setIsLoading(false);
+        setMeetUps(meetUpsArr);
+      });
+  }, []); //no external dependencies
+
+  if (isLoading) {
+    return (
+      <section>
+        <p>Loading...</p>
+      </section>
+    );
+  }
   return (
     <section>
       <h1>All Meetups</h1>
-      <MeetUpList meetups={DUMMY_DATA} />
+      <MeetUpList meetups={meetUps} />
     </section>
   );
 };
