@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import NewMeetUpForm from "../components/meetups/NewMeetUpForm";
 
 const NewMeetUpsPage = () => {
+  const navigate = useNavigate();
+
   const addMeetUpHander = (meetUpData) => {
     //firebase db url,
     //config object for post request - data should be in JSON format
@@ -15,7 +18,9 @@ const NewMeetUpsPage = () => {
           "Content-Type": "application/json",
         },
       }
-    );
+    ).then(() => {
+      navigate("/");
+    });
   };
 
   return (
