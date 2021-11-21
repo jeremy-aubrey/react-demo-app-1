@@ -20,13 +20,16 @@ const FavoritesContextProvider = (props) => {
       })
   };
 
-  const itemIsFavtorite = () => {};
+  const itemIsFavtoriteHandler = (meetUpId) => {
+      return userFavorites.some(meetUp => meetUp.id === meetUpId);
+  };
 
   const context = {
     favorites: userFavorites,
     totalFavorites: userFavorites.length,
     addFavorite: addFavoriteHandler,
-    removeFavore: removeFavoriteHander
+    removeFavore: removeFavoriteHander,
+    itemIsFavtorite: itemIsFavtoriteHandler,
   };
 
   return (
