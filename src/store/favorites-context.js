@@ -14,7 +14,11 @@ const FavoritesContextProvider = (props) => {
     });
   };
 
-  const removeFavoriteHander = () => {};
+  const removeFavoriteHander = (meetUpId) => {
+      setUserFavorites((prevState) => {
+          return prevState.filter(meetUp => meetUp.id !== meetUpId);
+      })
+  };
 
   const itemIsFavtorite = () => {};
 
@@ -22,6 +26,7 @@ const FavoritesContextProvider = (props) => {
     favorites: userFavorites,
     totalFavorites: userFavorites.length,
     addFavorite: addFavoriteHandler,
+    removeFavore: removeFavoriteHander
   };
 
   return (
