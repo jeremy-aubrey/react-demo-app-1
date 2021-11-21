@@ -8,7 +8,6 @@ page.<br>
 - Users can add and remove events from their favorites list on 
 the My Favorites page<br>
 <space>
-\!\[Screenshot\](/path to image in your project/your_image.png)
 
 ![Screenshot](/docs/site_screenshot.png)
 
