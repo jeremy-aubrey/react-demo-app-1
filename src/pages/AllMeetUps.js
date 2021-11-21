@@ -9,7 +9,7 @@ const AllMeetUpsPage = () => {
   useEffect(() => {
     setIsLoading(true);
     /*
-      NOTE: Firebase will return an object with properties with nested objects
+      NOTE: Firebase will return an object with properties containing nested objects
     */
     fetch(
       "https://react-demo-project-1-default-rtdb.firebaseio.com/meetups.json"
@@ -23,12 +23,10 @@ const AllMeetUpsPage = () => {
         for (const key in data) {
           const meetUp = {
             id: key,
-            ...data[key]
-          }
+            ...data[key],
+          };
           meetUpsArr.push(meetUp);
         }
-
-        console.log(meetUpsArr);
         setIsLoading(false);
         setMeetUps(meetUpsArr);
       });
