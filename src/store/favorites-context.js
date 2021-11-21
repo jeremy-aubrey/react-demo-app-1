@@ -1,14 +1,15 @@
 import { createContext, useState } from "react";
 
+//initial context
 const FavoritesContext = createContext({
   favorites: [],
   totalFavorites: 0,
   addFavorite: (meetUp) => {},
   removeFavorite: (meetUpId) => {},
-  itemIsFavorite: (meetUpId) => {}
+  itemIsFavorite: (meetUpId) => {},
 });
 
-const FavoritesContextProvider = (props) => {
+export const FavoritesContextProvider = (props) => {
   const [userFavorites, setUserFavorites] = useState([]);
 
   const addFavoriteHandler = (favoriteMeetUp) => {
@@ -18,13 +19,13 @@ const FavoritesContextProvider = (props) => {
   };
 
   const removeFavoriteHander = (meetUpId) => {
-      setUserFavorites((prevState) => {
-          return prevState.filter(meetUp => meetUp.id !== meetUpId);
-      })
+    setUserFavorites((prevState) => {
+      return prevState.filter((meetUp) => meetUp.id !== meetUpId);
+    });
   };
 
   const itemIsFavtoriteHandler = (meetUpId) => {
-      return userFavorites.some(meetUp => meetUp.id === meetUpId);
+    return userFavorites.some((meetUp) => meetUp.id === meetUpId);
   };
 
   const context = {
@@ -41,3 +42,5 @@ const FavoritesContextProvider = (props) => {
     </FavoritesContext.Provider>
   );
 };
+
+export default FavoritesContext;
